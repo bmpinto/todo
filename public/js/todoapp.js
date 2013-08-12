@@ -341,7 +341,7 @@ jQuery(function($){
 		var link = $(this).attr('href');
 
 		$.ajax({ 
-			url: "public/logout.php", 
+			url: "public/login.php", 
 			success: function(data){ if(data) { window.location.href = link; } }
 		});
 	});
