@@ -12,3 +12,15 @@
     </div>
   </div>
 </div>
+<script>
+	 $('.fb').on('click', function(e){
+	    e.preventDefault();
+
+	    var link = $(this).attr('data-href');
+
+	    $.ajax({ 
+	      url: "public/login.php", 
+	      success: function(data){ if(data) { window.location.href = link; } }
+	    });
+	  });
+</script>
