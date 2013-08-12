@@ -37,7 +37,7 @@
 		}
 
 		public function addItem( $item_title, $item_status, $item_user_id ){
-			$stmt = $this->db->prepare("INSERT INTO items(item_title, item_status, user_id) VALUE(:item_title, :item_status, :item_user_id)");
+			$stmt = $this->db->prepare("INSERT INTO items(item_title, item_status, user_id) VALUES (:item_title, :item_status, :item_user_id)");
 			$stmt->bindParam(':item_title', $item_title, PDO::PARAM_STR);
 			$stmt->bindParam(':item_status', $item_status, PDO::PARAM_STR);
 			$stmt->bindParam(':item_user_id', $item_user_id, PDO::PARAM_INT);
