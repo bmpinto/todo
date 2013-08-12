@@ -1,6 +1,6 @@
 <?php
 	if (isset($_SESSION['user_id'])) {       
-        require_once('app.php');
+        require_once('public/app.php');
     }
     else
     {
