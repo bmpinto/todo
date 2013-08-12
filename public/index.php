@@ -45,7 +45,6 @@ $app_name = idx($app_info, 'name', '');
     <title>BMPinto - Todo App</title>
     <link rel="stylesheet" href="public/css/styles.css" />
     <link rel="stylesheet" href="public/css/styles-init.css" />
-    <script src="public/js/jquery-1.10.2.min.js"></script>
 
     <meta property="og:title" content="<?php echo he($app_name); ?>" />
     <meta property="og:type" content="website" />
@@ -109,7 +108,10 @@ $app_name = idx($app_info, 'name', '');
       if ($user_id) {
         $_SESSION['user_name'] = he(idx($basic, 'first_name'));
         $_SESSION['user_id'] = $user_id;
+        
+        require_once('app.php');
       }
     ?>
+
   </body>
 </html>
