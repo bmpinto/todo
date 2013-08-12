@@ -16,7 +16,7 @@
 		}
 
 		public function getUser($fb_id){
-			$stmt = $this->db->prepare("SELECT * FROM user WHERE fb_id = :fb_id");
+			$stmt = $this->db->prepare("SELECT * FROM utilizador WHERE fb_id = :fb_id");
 			$stmt->bindParam(':fb_id', $fb_id, PDO::PARAM_INT);
 		    $stmt->execute();
 		    return json_encode( $stmt->fetch() );
@@ -24,7 +24,7 @@
 
 		public function addUser( $fb_id ){
 			$ret = $fb_id;
-			$stmt = $this->db->prepare("INSERT INTO user(fb_id) VALUE(:fb_id)");
+			$stmt = $this->db->prepare("INSERT INTO utilizador(fb_id) VALUE(:fb_id)");
 			$stmt->bindParam(':fb_id', $fb_id, PDO::PARAM_STR);
 			$stmt->execute();
 			return $ret;

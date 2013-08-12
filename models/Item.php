@@ -16,21 +16,21 @@
 		}
 
 		public function getItems($fb_id){
-			$stmt = $this->db->prepare("SELECT * FROM user u, items i WHERE u.user_id = i.user_id AND u.fb_id = :fb_id");
+			$stmt = $this->db->prepare("SELECT * FROM utilizador u, items i WHERE u.user_id = i.user_id AND u.fb_id = :fb_id");
 			$stmt->bindParam(':fb_id', $fb_id, PDO::PARAM_STR);
 		    $stmt->execute();
 		    return json_encode( $stmt->fetchAll() );
 		}
 
 		public function getActiveItems($fb_id){
-			$stmt = $this->db->prepare("SELECT * FROM user u, items i WHERE u.user_id = i.user_id AND u.fb_id = :fb_id AND i.item_status = 'false'");
+			$stmt = $this->db->prepare("SELECT * FROM utilizador u, items i WHERE u.user_id = i.user_id AND u.fb_id = :fb_id AND i.item_status = 'false'");
 			$stmt->bindParam(':fb_id', $fb_id, PDO::PARAM_STR);
 		    $stmt->execute();
 		    return json_encode( $stmt->fetchAll() );
 		}
 
 		public function getDoneItems($fb_id){
-			$stmt = $this->db->prepare("SELECT * FROM user u, items i WHERE u.user_id = i.user_id AND u.fb_id = :fb_id AND i.item_status = 'true'");
+			$stmt = $this->db->prepare("SELECT * FROM utilizador u, items i WHERE u.user_id = i.user_id AND u.fb_id = :fb_id AND i.item_status = 'true'");
 			$stmt->bindParam(':fb_id', $fb_id, PDO::PARAM_STR);
 		    $stmt->execute();
 		    return json_encode( $stmt->fetchAll() );
@@ -40,7 +40,7 @@
 			$stmt = $this->db->prepare("INSERT INTO items(item_title, item_status, user_id) VALUE(:item_title, :item_status, :item_user_id)");
 			$stmt->bindParam(':item_title', $item_title, PDO::PARAM_STR);
 			$stmt->bindParam(':item_status', $item_status, PDO::PARAM_STR);
-			$stmt->bindParam(':item_user_id', $item_user_id, PDO::PARAM_STR);
+			$stmt->bindParam(':item_user_id', $item_user_id, PDO::PARAM_INT);
 			$stmt->execute();
 			return json_encode( $this->db->lastInsertId() );
 		}
