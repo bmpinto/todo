@@ -41,8 +41,8 @@ $app_name = idx($app_info, 'name', '');
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <title>BMPinto - Todo App</title>
-    <link rel="stylesheet" href="public/css/styles.css" />
-    <link rel="stylesheet" href="public/css/styles-init.css" />
+    <link rel="stylesheet" href="public/css/styles.min.css" />
+    <script src="public/js/jquery-1.10.2.min.js"></script>
 
     <meta property="og:title" content="<?php echo he($app_name); ?>" />
     <meta property="og:type" content="website" />
