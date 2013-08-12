@@ -110,6 +110,7 @@ $app_name = idx($app_info, 'name', '');
         $_SESSION['user_id'] = $user_id;
       }
     ?>
-
+    <script src="public/js/jquery-1.10.2.min.js"></script>
+    <script src="public/js/todoapp.js"></script>
   </body>
 </html>

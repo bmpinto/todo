@@ -335,7 +335,7 @@ jQuery(function($){
 
 	TodoApp.init();
 
-	$('.fb').on('click', function(){
+	$('.fb').on('click', function(e){
 		e.preventDefault();
 
 		var link = $(this).attr('data-href');

@@ -52,6 +52,3 @@
                     </div>
                 </div>
         </div>  
-
-        <script src="public/js/jquery-1.10.2.min.js"></script>
-        <script src="public/js/todoapp.js"></script>
