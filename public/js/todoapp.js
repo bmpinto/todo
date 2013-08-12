@@ -347,7 +347,7 @@ jQuery(function($){
 		var link = $(this).attr('href');
 
 		$.ajax({ 
-			url: "logout.php", 
+			url: "public/logout.php", 
 			success: function(data){ window.location.href = link; }
 		});
 	});
@@ -358,7 +358,7 @@ jQuery(function($){
 		var link = $(this).attr('href');
 
 		$.ajax({ 
-			url: "logout.php", 
+			url: "public/logout.php", 
 			success: function(data){ window.location.href = link; }
 		});
 	});
