@@ -87,9 +87,6 @@ $app_name = idx($app_info, 'name', '');
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <title>BMPinto - Todo App</title>
-
-    <link rel="stylesheet" href="stylesheets/screen.css" media="Screen" type="text/css" />
-    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)" type="text/css" />
     <link rel="stylesheet" href="public/css/styles.css" />
     <link rel="stylesheet" href="public/css/styles-init.css" />
 
@@ -162,7 +159,7 @@ $app_name = idx($app_info, 'name', '');
         $_SESSION['user_name'] = he(idx($basic, 'first_name'));
         $_SESSION['user_id'] = $user_id;
         
-        require_once('index.php');
+        require_once('app.php');
       }
     ?>
 
