@@ -338,7 +338,7 @@ jQuery(function($){
 	$('.fb').on('click', function(){
 		e.preventDefault();
 
-		var link = $(this).attr('href');
+		var link = $(this).attr('data-href');
 
 		$.ajax({ 
 			url: "public/login.php", 
