@@ -1,9 +1,25 @@
 jQuery(function($){
 	'use strict';
 	
+	/*
+	|==========================================================
+	| Core da aplicacao feito em JQuery.
+	| Todas as accoes feitas na aplicacao sao assincronas,
+	| pelo que em cada pedido, a mudanca e' feita no servidor,
+	| atingindo assim o conceito de "single page application"
+	|==========================================================
+	*/
+
 	var global_user, global_active = 0;
 
 	var TodoApp = {
+		/*
+		|==========================================================
+		| Inicia a aplicacao e verifica se o utilizador existe.
+		| Se existir vai buscar os seus todos.
+		| Se nao existir, e' criado um novo utilizador. 
+		|==========================================================
+		*/
 		init: function(){
 			var $setUpUser = $.ajax({
 				type: "POST",
@@ -20,6 +36,7 @@ jQuery(function($){
 			this.bindEvents();
 		},
 
+		// funcao que associa elementos do DOM a variaveis
 		bindElements: function(){
 			this.$newTodo = $('.new-todo');
 			this.$todoList = $('.todo-list');
@@ -27,6 +44,7 @@ jQuery(function($){
 			this.$header = $('#header');
 		},
 
+		// funcao que associa eventos a variaveis do DOM
 		bindEvents: function(){
 			this.$newTodo.on('keypress', this.createItem);
 			this.$todoList.on('dblclick', '.view-todo', this.editItem);
@@ -39,6 +57,12 @@ jQuery(function($){
 			this.$header.on('click', '.allItems', this.getItems);
 		},
 
+		/*
+		|==========================================================
+		| Funcao que tem o objectivo de ir buscar os 'todos'
+		| do utilizador, inserindo-os no DOM
+		|==========================================================
+		*/
 		getItems: function(){
 			var activeCount = 0; 
 			$('.allItems').addClass('activo').siblings().removeClass('activo');
@@ -66,6 +90,10 @@ jQuery(function($){
 			});
 		},
 
+		/* 
+			Funcao que vai buscar os 'todos' do utilizador, 
+			que ainda se encontram por fazer
+		*/
 		getActiveItems: function(){
 			var activeCount = 0;
 			$('.activeItems').addClass('activo').siblings().removeClass('activo');
@@ -89,6 +117,10 @@ jQuery(function($){
 			});
 		},
 
+		/* 
+			Funcao que vai buscar os 'todos' do utilizador, 
+			que ja se encontram feitos.
+		*/
 		getDoneItems: function(){
 			$('.doneItems').addClass('activo').siblings().removeClass('activo');
 			$('.new-todo').fadeOut();
@@ -110,6 +142,7 @@ jQuery(function($){
 			});
 		},
 
+		// Funcao que conta o numero de 'todos' que se encontram por fazer
 		activeCount: function(){
 			global_active = 0;
 			$.each(this.$todoList.find('li'), function(){
@@ -119,6 +152,7 @@ jQuery(function($){
 			return global_active;
 		},
 
+		// Funcao que cria um 'todo' e o insere no DOM
 		createItem: function(e){
 			var $input_val = $.trim($(this).val());
 
@@ -141,6 +175,7 @@ jQuery(function($){
 			$(this).val('');
 		},
 
+		// Funcao responsavel por inserir um 'todo' no DOM
 		appendItem: function(data){
 			var i = 0, view, status;
 			for( i = 0; i < data.length; i++ ){
@@ -160,6 +195,7 @@ jQuery(function($){
 			}
 		},
 
+		// Funcao auxiliar que decide que estilo utilizar para o tudo baseando-se no seu estado
 		processView: function(data){
 			var notcomplete = '<input type="checkbox" class="complete-todo"><label>' + data.item_title + '</label><p class="destroy-todo">x</p>',
 				complete = '<input type="checkbox" class="complete-todo" checked="checked"><label class="complete">' + data.item_title + '</label><p class="destroy-todo">x</p>';
@@ -167,6 +203,14 @@ jQuery(function($){
 			return data.item_status == 'false' ? notcomplete: complete;
 		},
 
+		/*
+		|==========================================================
+		| As 3 funcoes seguintes fazem parte do mesmo processo: edicao de um 'todo'
+		| editItem: processa um duplo click no 'todo' e actualiza o seu valor quando o utilizador carrega no enter
+		| blurItemOnEnter: quando o utilizador carrega no enter despoleta uma chamada 'a funcao seguinte
+		| updateItem: por fim, o 'todo' e' actualizado e surge uma informacao visual de que tal sucedeu
+		|==========================================================
+		*/
 		editItem: function(){
 			var $editable = $(this).closest('li').addClass('editing').find('.edit-todo');
 			var $label = $(this).closest('li').find('label');
@@ -231,6 +275,7 @@ jQuery(function($){
 			});
 		},
 
+		// remove um 'todo' por completo e tambem do DOM
 		removeItem: function(){
 			var $parent = $(this).closest('li'),
 				$parent_clone = $parent.clone();
@@ -254,6 +299,8 @@ jQuery(function($){
 			});
 		},
 
+
+		// Funcao que actualiza o estilo do texto do 'todo' quando se carrega na checkbox
 		completeItem: function(){
 			var $itemLabel = $(this).parent().find('label');
 			$(this).is(':checked') ? $itemLabel.addClass('complete') : $itemLabel.removeClass('complete');
@@ -261,6 +308,7 @@ jQuery(function($){
 			TodoApp.updateComplete($(this));
 		},
 
+		// Funcao que actualiza o estado do 'todo'
 		updateComplete: function($item){
 			var that = this, $parent = $item.closest('li'),
 				$itemLabel = $parent.find('label'),
@@ -328,6 +376,7 @@ jQuery(function($){
 			});
 		},
 
+		// Hide/show do loader dos 'todos'
 		toggleLoader: function( el ){
 			el.find('.loaderItems').toggle();
 		}
@@ -335,6 +384,12 @@ jQuery(function($){
 
 	TodoApp.init();
 
+	/*
+	|==========================================================
+	| Lidar com logouts. 
+	| Faz pedido assincrono para limpar e destruir a sessao.
+	|==========================================================
+	*/
 	$('.logout').hover(function(){
 		$('.logoutHelper').animate({ opacity: 1, left: '30px' });
 	}, function(){

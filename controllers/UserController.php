@@ -1,4 +1,18 @@
 <?php
+	/*
+	|==========================================================
+	| Controller responsavel por todas as accoes que tem em conta os utilizadores.
+	| Mediante o pedido assincrono por parte do cliente, decide que accao tera' de tomar.
+	| Faz o processamento e validacao dos dados e invoca funcoes do Model, que e' responsavel
+	| pela interaccao com a base de dados.
+	| 
+	| Accoes:
+	|	setUpUser: verifica se o utilizador se encontra na base de dados. caso se verifique, devolve o seu id.
+	|			caso nao se verifique, chama a funcao addUser.
+	|	addUser: adiciona um utilizador 'a tabela de utilizadores.
+	|==========================================================
+	*/
+
 	session_start();
 
 	require('../config.php');

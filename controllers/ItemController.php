@@ -1,4 +1,21 @@
 <?php
+	/*
+	|==========================================================
+	| Controller responsavel por todas as accoes que tem em conta com os 'todos'.
+	| Mediante o pedido assincrono por parte do cliente, decide que accao tera' de tomar.
+	| Faz o processamento e validacao dos dados e invoca funcoes do Model, que e' responsavel
+	| pela interaccao com a base de dados.
+	| 
+	| Accoes:
+	|	getItems: vai buscar todos os 'todos'.
+	|	getActiveItems: vai buscar so os 'todos' que estao por fazer.
+	|	getDoneItems: vai buscar so os 'todos' que ja estao feitos.
+	|	addItem: adicionar um 'todo' a lista do proprio utilizador. 
+	|	updateItem: actualiza um 'todo'.
+	|	removeItem: apaga um 'todo'.
+	|==========================================================
+	*/
+
 	session_start();
 
 	require('../config.php');

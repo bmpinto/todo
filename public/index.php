@@ -1,5 +1,4 @@
 <?php
-
 require_once('./AppInfo.php');
 
 // Enforce https on production
@@ -7,7 +6,6 @@ if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != 
   header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
   exit();
 }
-
 
 require_once('./utils.php');
 require_once('./sdk/src/facebook.php');
