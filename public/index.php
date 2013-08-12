@@ -111,6 +111,5 @@ $app_name = idx($app_info, 'name', '');
       }
     ?>
     <script src="public/js/jquery-1.10.2.min.js"></script>
-    <script src="public/js/todoapp.js"></script>
   </body>
 </html>
