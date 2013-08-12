@@ -130,7 +130,8 @@ jQuery(function($){
 				url: "controllers/ItemController.php",
 				data: { action: 'addItem', item_title: $input_val, item_status: false, user_id: global_user.user_id },
 				success: function(item_id){
-					var data = [{ item_id: item_id, item_title: $input_val, item_status: 'false' }];
+					var parsed_item = jQuery.parseJSON(item_id);
+					var data = [{ item_id: parsed_item.item_id, item_title: $input_val, item_status: 'false' }];
 					$('.loaderNewTodo').toggle();
 					TodoApp.appendItem(data);
 					TodoApp.$activeItemsNumber.html(++global_active);
