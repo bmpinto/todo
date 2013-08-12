@@ -17,7 +17,7 @@
 				$user = addslashes( $user );
 				$user_id = $this->user->getUser( $user );
 				
-				return $user_id != 'false' ? $user_id : $this->addUser( $user_id );
+				return $user_id != 'false' ? $user_id : $this->addUser( $user );
 			}
 		}
 
