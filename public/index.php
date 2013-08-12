@@ -151,8 +151,17 @@ $app_name = idx($app_info, 'name', '');
       }(document, 'script', 'facebook-jssdk'));
     </script>
 
-      <?php if (isset($basic)) { ?>
-      <?php } else { require_once('init.php'); } ?>
+      <?php 
+        if (isset($basic)) 
+        { 
+          $logoutUrl = $facebook->getLogoutUrl(); 
+        } 
+        else 
+        { 
+          $loginUrl = $facebook->getLoginUrl(); 
+          require_once('init.php'); 
+        } 
+      ?>
 
     <?php
       if ($user_id) {
