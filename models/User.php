@@ -29,7 +29,7 @@
 			$stmt->bindParam(':fb_id', $fb_id, PDO::PARAM_STR);
 			$stmt->execute();
 			*/
-			return 'este e o id do fb: ' . $ret;
+			return 'este e o id do fb: ' . $fb_id;
 		}
 	}
 

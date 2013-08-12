@@ -17,7 +17,7 @@
 				$user = addslashes( $user );
 				$user_id = $this->user->getUser( $user );
 				
-				return $user_id != 'false' ? $user_id : $this->addUser( $user );
+				return $user_id != 'false' ? $user_id : $this->addUser( $user_id );
 			}
 		}
 
@@ -34,7 +34,7 @@
 
 	switch( $_POST['action'] ){
 		case 'setUpUser' : 
-			echo $_SESSION['user_id']; //$UserCtrl->setUpUser( $_SESSION['user_id'] );
+			echo $UserCtrl->setUpUser( $_SESSION['user_id'] );
 		break;
 	}
 
