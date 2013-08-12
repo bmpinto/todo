@@ -161,6 +161,8 @@ $app_name = idx($app_info, 'name', '');
       if ($user_id) {
         $_SESSION['user_name'] = he(idx($basic, 'first_name'));
         $_SESSION['user_id'] = $user_id;
+
+        print_r($_SESSION['user_id']);
         
         require_once('public/index.php');
       }
