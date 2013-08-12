@@ -7,7 +7,7 @@
 		public function __construct($config){
 			try{
 				$this->config = $config;
-				$this->db = new PDO("mysql:host=localhost;dbname=todo", $this->config['DB_USERNAME'], $this->config['DB_PASSWORD']);
+				$this->db = new PDO( $this->config );
 				$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			} catch(PDOException $e){
 				echo 'ERROR: ' . $e->getMessage();

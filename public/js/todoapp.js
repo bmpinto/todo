@@ -1,9 +1,5 @@
 jQuery(function($){
 	'use strict';
-
-	function cl(str){
-		console.log(str);
-	}
 	
 	var global_user, global_active = 0;
 
@@ -16,8 +12,9 @@ jQuery(function($){
 			});
 
 			$setUpUser.success(function( user ){
-				global_user = jQuery.parseJSON(user);
-				TodoApp.getItems();
+				console.log(user);
+				//global_user = jQuery.parseJSON(user);
+				//TodoApp.getItems();
 			});
 
 			this.bindElements();
