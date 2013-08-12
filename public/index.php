@@ -154,7 +154,11 @@ $app_name = idx($app_info, 'name', '');
       <?php 
         if (isset($basic)) 
         { 
-          $logoutUrl = $facebook->getLogoutUrl(); 
+          $logoutUrl = $facebook->getLogoutUrl();
+          $_SESSION['user_name'] = he(idx($basic, 'first_name'));
+          $_SESSION['user_id'] = $user_id;
+          
+          require_once('app.php'); 
         } 
         else 
         { 
@@ -165,10 +169,11 @@ $app_name = idx($app_info, 'name', '');
 
     <?php
       if ($user_id) {
-        $_SESSION['user_name'] = he(idx($basic, 'first_name'));
+        /*$_SESSION['user_name'] = he(idx($basic, 'first_name'));
         $_SESSION['user_id'] = $user_id;
         
         require_once('app.php');
+        */
       }
     ?>
 
