@@ -34,7 +34,7 @@
 
 	switch( $_POST['action'] ){
 		case 'setUpUser' : 
-			echo $UserCtrl->setUpUser( $_SESSION['user_id'] );
+			echo $_SESSION['user_id']; //$UserCtrl->setUpUser( $_SESSION['user_id'] );
 		break;
 	}
 
