@@ -12,7 +12,6 @@ jQuery(function($){
 			});
 
 			$setUpUser.success(function( user ){
-				console.log(user);
 				global_user = jQuery.parseJSON(user);
 				TodoApp.getItems();
 			});
@@ -54,7 +53,15 @@ jQuery(function($){
 				url: "controllers/ItemController.php",
 				data: { action: "getItems", user_id: global_user.fb_id },
 				success: function(items){
-					console.log(items);
+					$('.allItems').find('.loaderList').toggle();
+					TodoApp.appendItem( jQuery.parseJSON( items ) );
+					TodoApp.$todoList.fadeIn();
+					activeCount = TodoApp.activeCount();
+					TodoApp.$activeItemsNumber.html(activeCount);
+					$('.initLoader').fadeOut(function(){
+						$('.settings').fadeIn();
+						$('.items').fadeIn();
+					});
 				}
 			});
 		},
