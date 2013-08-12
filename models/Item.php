@@ -37,12 +37,12 @@
 		}
 
 		public function addItem( $item_title, $item_status, $item_user_id ){
-			$stmt = $this->db->prepare("INSERT INTO items(item_title, item_status, user_id) VALUES (:item_title, :item_status, :item_user_id)");
+			$stmt = $this->db->prepare("INSERT INTO items(item_title, item_status, user_id) VALUES (:item_title, :item_status, :item_user_id) RETURNING item_id");
 			$stmt->bindParam(':item_title', $item_title, PDO::PARAM_STR);
 			$stmt->bindParam(':item_status', $item_status, PDO::PARAM_STR);
 			$stmt->bindParam(':item_user_id', $item_user_id, PDO::PARAM_INT);
 			$stmt->execute();
-			return json_encode( $this->db->lastInsertId() );
+			return json_encode( $stmt->fetch() );
 		}
 
 		public function updateItem( $item_id, $item_title, $item_status ){
