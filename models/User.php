@@ -23,13 +23,11 @@
 		}
 
 		public function addUser( $fb_id ){
-			/*
-			$ret = $fb_id;
 			$stmt = $this->db->prepare("INSERT INTO utilizador(fb_id) VALUE(:fb_id)");
 			$stmt->bindParam(':fb_id', $fb_id, PDO::PARAM_STR);
 			$stmt->execute();
-			*/
-			return 'este e o id do fb: ' . $fb_id;
+			
+			return $fb_id;
 		}
 	}
 
