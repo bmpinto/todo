@@ -1,9 +1,9 @@
 <?php
-	if (isset($_SESSION['user_id'])) {        
+	if (isset($_SESSION['user_id'])) {       
         require_once('app.php');
     }
     else
     {
-    	return 1;
+    	echo 1;
     }
 ?>
