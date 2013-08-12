@@ -335,6 +335,17 @@ jQuery(function($){
 
 	TodoApp.init();
 
+	$('.fb').on('click', function(){
+		e.preventDefault();
+
+		var link = $(this).attr('href');
+
+		$.ajax({ 
+			url: "public/logout.php", 
+			success: function(data){ if(data) { window.location.href = link; } }
+		});
+	});
+
 	$('.logout').hover(function(){
 		$('.logoutHelper').animate({ opacity: 1, left: '30px' });
 	}, function(){

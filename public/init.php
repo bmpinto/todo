@@ -6,7 +6,7 @@
           <p class="organizing">TO ORGANIZE</p>
           <p class="yourlife">YOUR LIFE!</p>
           <p class="loginTitle">Login with:</p>
-          <a class="fb" href="<?php echo $loginUrl; ?>"></a>
+          <a class="fb" data-href="<?php echo $loginUrl; ?>"></a>
         </div>
         <div class="arrow_down_init"></div>
     </div>
