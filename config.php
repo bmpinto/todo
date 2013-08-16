@@ -2,10 +2,10 @@
 
 	$config = "pgsql:"
 		    . "host=ec2-54-221-203-200.compute-1.amazonaws.com;"
-		    . $_ENV['dbname']
-		    . $_ENV['dbuser']
-		    . ";port=5432;"
+		    . "dbname=d9m44lac0b8q1a;"
+		    . "user=aauaqcstenptmg;"
+		    . "port=5432;"
 		    . "sslmode=require;"
-		    . $_ENV['dbpw'];
+		    . "password=cyrSMITV7QfZBGQGt_JbN3G70c";
 
 ?>
