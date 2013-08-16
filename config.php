@@ -1,7 +1,7 @@
 <?php
 
 	$config = "pgsql:"
-		    . "host=ec2-54-221-203-200.compute-1.amazonaws.com;"
+		    . "host=". getenv("dbhost") .";"
 		    . "dbname=". getenv("dbname") .";"
 		    . "user=". getenv("dbuser") .";"
 		    . "port=5432;"
