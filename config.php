@@ -6,6 +6,6 @@
 		    . $_ENV['dbuser']
 		    . "port=5432;"
 		    . "sslmode=require;"
-		    . $_ENV['dbpw']
+		    . $_ENV['dbpw'];
 
 ?>
