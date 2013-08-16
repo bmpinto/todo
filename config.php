@@ -8,4 +8,4 @@
 		    . "sslmode=require;"
 		    . "password=". getenv("dbpw");
 
-?>
+?
