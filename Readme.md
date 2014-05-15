@@ -7,4 +7,4 @@ Simple todo application with database integration.
 * Database: PostgreSQL  
 * Social: Facebook SDK  
 
-Deployed on Heroku: [here] (fast-savannah-1056.herokuapp.com)
+Deployed on Heroku: [here] (http://fast-savannah-1056.herokuapp.com)
